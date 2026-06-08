@@ -1,0 +1,41 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix genre: <http://example.org/music/genre/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# NOTE TO SELF: Show the visualisation
+genre:AlternativeRock a skos:Concept ;
+    skos:prefLabel "Alternative Rock" .
+
+genre:ArtPop a skos:Concept ;
+    skos:prefLabel "Art Pop" .
+
+genre:Blackgaze a skos:Concept ;
+    skos:prefLabel "Blackgaze" ;
+    skos:broader genre:Shoegaze .
+
+genre:Electronic a skos:Concept ;
+    skos:prefLabel "Electronic" .
+
+genre:Industrial a skos:Concept ;
+    skos:prefLabel "Industrial" .
+
+genre:NoiseRock a skos:Concept ;
+    skos:prefLabel "Noise Rock" .
+
+genre:Post-Rock a skos:Concept ;
+    skos:prefLabel "Post-Rock" ;
+    skos:altLabel "Post Rock" .
+
+genre:ProgressiveMetal a skos:Concept ;
+    skos:prefLabel "Progressive Metal" .
+
+genre:ProgressiveRock a skos:Concept ;
+    skos:prefLabel "Progressive Rock" ;
+    skos:altLabel "Prog Rock" .
+
+genre:Shoegaze a skos:Concept ;
+    skos:prefLabel "Shoegaze" .
+
+genre:TripHop a skos:Concept ;
+    skos:prefLabel "Trip Hop" ;
+    skos:altLabel "Trip-Hop" .

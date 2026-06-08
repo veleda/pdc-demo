@@ -1,0 +1,119 @@
+@prefix mu:    <http://example.org/music/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+
+# --- Classes ---
+
+mu:Band a owl:Class ;
+    rdfs:label "Band" ;
+    rdfs:comment "A musical group or solo artist." .
+
+mu:Album a owl:Class ;
+    rdfs:label "Album" ;
+    rdfs:comment "A recorded music release." .
+
+mu:Festival a owl:Class ;
+    rdfs:label "Festival" ;
+    rdfs:comment "A music festival event." .
+
+# --- Band properties ---
+
+mu:name a owl:DatatypeProperty ;
+    rdfs:domain mu:Band, mu:Festival ;
+    rdfs:range xsd:string ;
+    rdfs:label "name" .
+
+mu:genre a owl:ObjectProperty ;
+    rdfs:domain mu:Band ;
+    rdfs:range skos:Concept ;
+    rdfs:comment "Genre as a SKOS Concept." .
+
+mu:formed a owl:DatatypeProperty ;
+    rdfs:domain mu:Band ;
+    rdfs:range xsd:long ;
+    rdfs:label "year formed" .
+
+mu:country a owl:DatatypeProperty ;
+    rdfs:domain mu:Band ;
+    rdfs:range xsd:string .
+
+mu:era a owl:DatatypeProperty ;
+    rdfs:domain mu:Band ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Derived classification: classic (<1980) or modern." .
+
+mu:musicbrainzId a owl:DatatypeProperty ;
+    rdfs:domain mu:Band ;
+    rdfs:range xsd:string ;
+    rdfs:comment "MusicBrainz artist UUID, enriched from Wikidata." .
+
+# --- Album properties ---
+
+mu:title a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:string .
+
+mu:artist a owl:ObjectProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range mu:Band .
+
+mu:year a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:long .
+
+mu:price a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:double ;
+    rdfs:comment "Vinyl store price in USD." .
+
+mu:inStock a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:boolean .
+
+# --- Discogs enrichment ---
+
+mu:discogsId a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:string .
+
+mu:firstPressYear a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:long .
+
+mu:firstPressCountry a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:string .
+
+mu:firstPressLabel a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Record label of the first pressing." .
+
+mu:firstPressFormat a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:string .
+
+mu:discogsLowestPrice a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:double ;
+    rdfs:comment "Current lowest marketplace listing price on Discogs." .
+
+mu:discogsCommunityHave a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:long .
+
+mu:discogsCommunityWant a owl:DatatypeProperty ;
+    rdfs:domain mu:Album ;
+    rdfs:range xsd:long .
+
+# --- Festival properties ---
+
+mu:playsAt a owl:ObjectProperty ;
+    rdfs:domain mu:Band ;
+    rdfs:range mu:Festival .
+
+mu:location a owl:DatatypeProperty ;
+    rdfs:domain mu:Festival ;
+    rdfs:range xsd:string .
